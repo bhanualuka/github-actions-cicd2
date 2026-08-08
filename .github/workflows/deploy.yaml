@@ -1,0 +1,39 @@
+name: "GitHub Actions Application Deployment"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: npm install dependencies
+        run: npm ci
+
+      - name: check versions
+        run: |
+          node --version
+          npm --version
+
+      - name: print welcome message
+        run: echo "Github actions workflow started succesfully"
+
+      - name: Checkout operating system
+        run: uname -a
+
+      - name: Checkout Current Directory
+        run: pwd
+
+      - name: list Directories
+        run: ls -la
