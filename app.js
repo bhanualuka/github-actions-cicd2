@@ -7,7 +7,7 @@ dotenv.config();
 const PORT = process.env.PORT || 9898;
 
 app.get("/", (req, res) => {
-  res.json({ message: "Jai sai master jai bapuji mahraj" });
+  res.json({ message: "Jai sai master jai bapuji mahraj v1" });
 });
 
 app.get("/health", (req, res) => {
