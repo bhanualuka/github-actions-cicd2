@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test-workflow:
+  Deploy-flow:
     runs-on: ubuntu-latest
 
     steps:
