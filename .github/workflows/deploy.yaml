@@ -26,6 +26,26 @@ jobs:
           node --version
           npm --version
 
+      - name: Deplying application
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ vars.EC2_HOST }}
+          username: ${{ vars.EC2_USERNAME }}
+          ssh_key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+
+          script: |
+            cd /home/ubuntu/github-actions-cicd2
+
+            git pull origin main
+
+            echo "PORT=${{ vars.PORT }}" > .env
+
+            docker compose down 
+            docker compose up -d --build
+
+            docker ps
+
       - name: print welcome message
         run: echo "Github actions workflow started succesfully"
 
