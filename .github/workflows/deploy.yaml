@@ -39,7 +39,7 @@ jobs:
 
             git pull origin main
 
-            echo "PORT= ${{ vars.PORT }}" > .env
+            echo "PORT=${{ vars.PORT }}" > .env
 
             docker compose down 
             docker compose up -d --build
